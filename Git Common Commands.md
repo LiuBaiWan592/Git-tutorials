@@ -63,7 +63,11 @@
 5. 回退文件至在仓库中已知的状态
 
    ```bash
+   # 将工作区指定文件 <filename> 恢复到最近一次提交时的状态，丢弃所有未提交的更改
    git checkout -- <filename>
+   
+   # 撤销工作区中对文件的修改
+   git restore <filename>
    ```
 
    
@@ -104,9 +108,12 @@
    git ls-files
    
    # 撤销在暂存区提交的文件
-   git restore --staged <file>
+   git restore --staged <filename>
+   
+   # 撤销工作区中对文件的修改，而不仅仅是暂存的修改
+   git restore <filename>
    ```
-
+   
    
 
 
