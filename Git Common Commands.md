@@ -2,20 +2,20 @@
 
 1. 配置用户信息
 
-    ```bash
-    git config --global user.name "username"
-    git config --global user.email "name@email.com"
-    ```
+   ```bash
+   git config --global user.name "username"
+   git config --global user.email "name@email.com"
+   ```
 
-    
+   
 
 2. 查看配置信息
 
-    ```bash
-    git config --list
-    ```
+   ```bash
+   git config --list
+   ```
 
-	
+   
 
 
 
@@ -23,60 +23,60 @@
 
 1. 初始化仓库
 
-    ```bash
-    git init
-    ```
+   ```bash
+   git init
+   ```
 
-    
+   
 
 2. 添加到暂存区
 
-    ```bash
-    # 添加一个或多个文件
-    git add <filename1> [filename2] [filename3] ...
-    
-    # 添加指定目录及其子目录
-    git add <dir>
-    
-    # 添加当前目录下的所有文件
-    git add .
-    ```
+   ```bash
+   # 添加一个或多个文件
+   git add <filename1> [filename2] [filename3] ...
+   
+   # 添加指定目录及其子目录
+   git add <dir>
+   
+   # 添加当前目录下的所有文件
+   git add .
+   ```
 
-    
+   
 
 3. 提交到本地仓库
 
-    ```bash
-    git commit -m <"message">
-    ```
+   ```bash
+   git commit -m <"message">
+   ```
 
-    
+   
 
 4. 查看仓库状态
 
-    ```bash
-    git status
-    ```
+   ```bash
+   git status
+   ```
 
-    
+   
 
-5. 回文件在仓库中已知的状态
+5. 回退文件至在仓库中已知的状态
 
-    ```bash
-    git checkout -- <filename>
-    ```
+   ```bash
+   git checkout -- <filename>
+   ```
 
-    
+   
 
 6. 查看提交日志
 
-    ```bash
-    # 查看完整日志
-    git log
-    
-    # 单行简略形式的树状图日志
-    git log --graph --pretty=oneline --abbrev-commit
-    ```
+   ```bash
+   # 查看完整日志
+   git log
+   
+   # 单行简略形式的树状图日志
+   git log --graph --pretty=oneline --abbrev-commit
+   ```
 
 
 
@@ -96,7 +96,17 @@
    # 上述命令的 --hard 参数为硬退回，舍弃未暂存的更改， --soft 为软退回，保留所有更改
    git reset --soft <commitID>
    ```
+
+9. 撤销在暂存区提交的文件
+
+   ```bash
+   # 查看暂存区的文件
+   git ls-files
    
+   # 撤销在暂存区提交的文件
+   git restore --staged <file>
+   ```
+
    
 
 
@@ -203,7 +213,6 @@
    * 无冲突：本地仓库是在远程仓库的基础上进行的修改，然后进行的新的`commit`
 
      > 使用`git push`命令即可成功推送，更新远程仓库的内容
-     >
 
    * 有冲突：远程仓库有比本地更新的`commit`，则需要合并冲突
 
@@ -255,10 +264,9 @@
    **冲突问题：**
 
    * 无冲突：本地仓库当前的状态已经提交并推送到远程仓库，远程仓库有更新的状态
-   
+
      > 直接执行`git pull`命令进行可以直接下载合并，当前的commit状态为远程仓库的状态
-     >
 
    * 有冲突：两个仓库都对同一个文件进行了修改
-   
+
      > 执行`git pull`命令合并后，会将冲突部分在文件中展现，修改文件后再进行提交即可完成本地仓库的更新
