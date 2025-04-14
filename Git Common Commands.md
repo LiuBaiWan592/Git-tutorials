@@ -7,15 +7,12 @@
    git config --global user.email "name@email.com"
    ```
 
-   
-
 2. 查看配置信息
 
    ```bash
    git config --list
    ```
 
-   
 
 
 
@@ -26,8 +23,6 @@
    ```bash
    git init
    ```
-
-   
 
 2. 添加到暂存区
 
@@ -42,23 +37,17 @@
    git add .
    ```
 
-   
-
 3. 提交到本地仓库
 
    ```bash
    git commit -m <"message">
    ```
 
-   
-
 4. 查看仓库状态
 
    ```bash
    git status
    ```
-
-   
 
 5. 回退文件至在仓库中已知的状态
 
@@ -70,8 +59,6 @@
    git restore <filename>
    ```
 
-   
-
 6. 查看提交日志
 
    ```bash
@@ -82,15 +69,11 @@
    git log --graph --pretty=oneline --abbrev-commit
    ```
 
-
-
 7. 记录执行的命令日志
 
    ```bash
    git reflog
    ```
-
-   
 
 8. 版本回退命令
 
@@ -116,17 +99,31 @@
 
 10. 取消跟踪文件与删除文件
 
-   ```bash
-   # 停止跟踪某个文件，但并不想将其删除：执行这个命令后，文件将从Git的暂存区（Stage）中移除，但仍然保留在磁盘上。
-   git rm --cached <filename>
-   
-   # 彻底删除Git代码库中的某个文件：这个命令不仅会从代码库中移除该文件，还会将其从磁盘中删除。
-   git rm <filename>
-   ```
+    ```bash
+    # 停止跟踪某个文件，但并不想将其删除：执行这个命令后，文件将从Git的暂存区（Stage）中移除，但仍然保留在磁盘上。
+    git rm --cached <filename>
+    
+    # 彻底删除Git代码库中的某个文件：这个命令不仅会从代码库中移除该文件，还会将其从磁盘中删除。
+    git rm <filename>
+    ```
 
-   
+11. 提交文件一次，但忽略后续更改
 
+    ```bash
+    # 将文件<filename>标记为假定未更改。从此之后，无论我们对该文件进行任何更改，Git都不会将这些更改视为需要跟踪和提交的修改。
+    git update-index --assume-unchanged <filename>
+    
+    # 如果我们想要对文件进行后续更改的跟踪和提交，可以使用--no-assume-unchanged选项
+    git update-index --no-assume-unchanged <filename>
+    
+    # 以上命令只对单个文件有效，若对某目录下所有文件都执行忽略后续更改则可使用以下命令
+    git ls-files <目录路径>/* | xargs -I {} git update-index --assume-unchanged {}
+    
+    git ls-files <目录路径>/* | xargs -I {} git update-index --no-assume-unchanged {}
+    
+    ```
 
+    
 
 ## 三、分支命令
 
@@ -135,8 +132,6 @@
    ```bash
    git branch [-v]
    ```
-
-   
 
 2. 创建分支
 
@@ -147,15 +142,11 @@
    git checkout -b <branchname>
    ```
 
-   
-
 3. 切换分支
 
    ```bash
    git checkout <branchname>
    ```
-
-   
 
 4. 合并分支到当前分支
 
@@ -175,15 +166,12 @@
 
      > 执行`git merge <branchname>`命令合并后，会将冲突部分在文件中展现，修改文件后再进行提交即可
 
-   
-
 5. 删除分支
 
    ```bash
    git branch -d <branchname>
    ```
 
-   
 
 
 
@@ -195,8 +183,6 @@
    ssh-keygen -t rsa -C "name@email.com"
    ```
 
-   
-
 2. 关联远程仓库
 
    ```bash
@@ -205,8 +191,6 @@
    # 例如：
    git remote add origin git@gitee.com:LiuBaiWan-Runner/git-demo.git
    ```
-
-   
 
 3. 推送到远程仓库
 
@@ -235,8 +219,6 @@
 
      > 先执行`git pull`命令将远程仓库下载到本地合并后，会将冲突部分在文件中展现，修改文件冲突后再进行`commit`,然后再次执行`git push`进行推送
 
-   
-
 4. 从远程仓库克隆
 
    ```bash
@@ -247,8 +229,6 @@
    git clone git@gitee.com:LiuBaiWan-Runner/git-demo.git
    ```
 
-   
-
 5. 查看远程仓库
 
    ```bash
@@ -258,8 +238,6 @@
    # 查看分支关联信息
    git branch -vv
    ```
-
-   
 
 6. 从远程仓库拉取
 
