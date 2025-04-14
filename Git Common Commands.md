@@ -121,8 +121,17 @@
     
     git ls-files <目录路径>/* | xargs -I {} git update-index --no-assume-unchanged {}
     
+    
+    # 如果忽略的文件多了，可以使用以下命令查看忽略列表
+    git ls-files -v | grep '^h '
+    
+    # 提取文件路径，方法如下
+    git ls-files -v | grep '^h ' | awk '{print $2}'
+    
+    # 所有被忽略的文件，取消忽略的方法，如下
+    git ls-files -v | grep '^h' | awk '{print $2}' |xargs git update-index --no-assume-unchanged
     ```
-
+    
     
 
 ## 三、分支命令
